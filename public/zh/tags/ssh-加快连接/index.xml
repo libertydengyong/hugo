@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>SSH 加快连接 on My New Hugo Site</title>
-    <link>http://localhost:1313/zh/tags/ssh-%E5%8A%A0%E5%BF%AB%E8%BF%9E%E6%8E%A5/</link>
+    <link>http://localhost:41747/zh/tags/ssh-%E5%8A%A0%E5%BF%AB%E8%BF%9E%E6%8E%A5/</link>
     <description>Recent content in SSH 加快连接 on My New Hugo Site</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 14 Jul 2025 04:26:57 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/tags/ssh-%E5%8A%A0%E5%BF%AB%E8%BF%9E%E6%8E%A5/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:41747/zh/tags/ssh-%E5%8A%A0%E5%BF%AB%E8%BF%9E%E6%8E%A5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SSH 加快连接的几种方法</title>
-      <link>http://localhost:1313/zh/posts/2025-07-14-ssh-e58aa0e5bfabe8bf9ee68ea5e79a84e587a0e7a78de696b9e6b395/</link>
+      <link>http://localhost:41747/zh/posts/2025-07-14-ssh-e58aa0e5bfabe8bf9ee68ea5e79a84e587a0e7a78de696b9e6b395/</link>
       <pubDate>Mon, 14 Jul 2025 04:26:57 +0000</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025-07-14-ssh-e58aa0e5bfabe8bf9ee68ea5e79a84e587a0e7a78de696b9e6b395/</guid>
+      <guid>http://localhost:41747/zh/posts/2025-07-14-ssh-e58aa0e5bfabe8bf9ee68ea5e79a84e587a0e7a78de696b9e6b395/</guid>
       <description>&lt;p&gt;SSH 加快连接的几种方法 方法1: 使用 SSH 密钥认证 (最推荐)： 原理： 密钥认证比密码认证快得多，因为它不需要在每次连接时传输密码并进行哈希运算。 方法2: 禁用 DNS 反向解析 (客户端 sshd_config)： 原理： SSH 服务器在接收连接时，默认会尝试反向解析客户端的 IP 地址到域名。如果客户端 IP 没有对应的 PTR 记录，或者 DNS 解析慢，这会拖慢连接速度。 这个方法是在服务器端 /etc/ssh/sshd_config 中配置，但效果体现在客户端连接速度， sudo nano /etc/ssh/sshd_config 修改为UseDNS no，如果前面有 #，删除它 方法3: 配置 SSH 客户端连接复用 (ControlMaster)： 原理： 允许您在同一个 SSH 会话上复用多个连接。当您第一次连接后，后续的连接（如 scp, sftp 或再次 ssh）将直接通过已建立的通道，无需重新进行认证和握手，速度极快。 在您本地电脑或 比如Termux 的 &lt;del&gt;/.ssh/config 文件(&lt;/del&gt;/.ssh/config 文件的权限必须是 600) 中添加以下配置： Host * ControlMaster auto ControlPath ~/.ssh/cm_socket/%r@%h:%p ControlPersist 600s # 保持主连接活跃 600 秒 &lt;strong&gt;方法4:优化连接超时设置 (客户端 &lt;code&gt;config&lt;/code&gt;)：&lt;/strong&gt; &lt;strong&gt;原理：&lt;/strong&gt; 减少 SSH 客户端等待服务器响应的时间。如果网络特别差，可能需要增加。在客户端的 &lt;code&gt;~/.ssh/config&lt;/code&gt; 中添加: Host * ConnectTimeout 10 # 连接超时10秒 ServerAliveInterval 60 # 每60秒发送一次保活消息 ServerAliveCountMax 3 # 最多发送3次保活消息未响应则断开 &lt;strong&gt;方法5: 指定密码认证方式 (客户端 &lt;code&gt;config&lt;/code&gt;):&lt;/strong&gt; &lt;strong&gt;原理：&lt;/strong&gt; 强制 SSH 客户端先尝试 &lt;code&gt;keyboard-interactive&lt;/code&gt; 或 &lt;code&gt;password&lt;/code&gt; 认证，而不浪费时间尝试其他不适用的认证方式。但通常，如果设置了密钥，SSH 会优先尝试密钥。 在 &lt;code&gt;~/.ssh/config&lt;/code&gt; 中添加（如果需要密码登录）： Host * PreferredAuthentications publickey,keyboard-interactive,password 方法6: 禁用 GSSAPI 认证 &lt;strong&gt;原理：&lt;/strong&gt; GSSAPI 认证（如 Kerberos）在某些环境下会尝试很长时间，导致连接缓慢。 &lt;strong&gt;在服务器端 &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt; 中设置&lt;/strong&gt; GSSAPIAuthentication no 保存并重启 SSH 服务 方法7: 使用 Mosh (Mobile Shell)&lt;/p&gt;</description>
     </item>
   </channel>

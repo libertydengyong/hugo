@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Vmess&#43;WebSocket搭建中转服务器 on My New Hugo Site</title>
-    <link>http://localhost:1313/zh/tags/vmess&#43;websocket%E6%90%AD%E5%BB%BA%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <link>http://localhost:41747/zh/tags/vmess&#43;websocket%E6%90%AD%E5%BB%BA%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
     <description>Recent content in Vmess&#43;WebSocket搭建中转服务器 on My New Hugo Site</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 09 May 2025 06:13:18 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/tags/vmess+websocket%E6%90%AD%E5%BB%BA%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:41747/zh/tags/vmess+websocket%E6%90%AD%E5%BB%BA%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vmess&#43;WebSocket搭建中转服务器</title>
-      <link>http://localhost:1313/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</link>
+      <link>http://localhost:41747/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</link>
       <pubDate>Fri, 09 May 2025 06:13:18 +0000</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</guid>
+      <guid>http://localhost:41747/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</guid>
       <description>&lt;p&gt;文章来源: &lt;a href=&#34;https://www.laoliuceping.com/31450.html&#34;&gt;https://www.laoliuceping.com/31450.html&lt;/a&gt; 比如一台德国机慢，一台日本机快，给&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #555555; font-family: &amp;lsquo;Microsoft Yahei&amp;rsquo;;&amp;quot;&amp;gt;两台服务器都安装3x-ui面板，配置德鸡，&lt;!-- raw HTML omitted --&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #555555; font-family: &amp;lsquo;Microsoft Yahei&amp;rsquo;;&amp;quot;&amp;gt;面板进入“新建入站”界面。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;选择协议为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;Vmess&lt;!-- raw HTML omitted --&gt;，默认端口为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;10391&lt;!-- raw HTML omitted --&gt;。&lt;/li&gt;

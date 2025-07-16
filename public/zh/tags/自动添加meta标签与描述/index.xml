@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>自动添加Meta标签与描述 on My New Hugo Site</title>
-    <link>http://localhost:1313/zh/tags/%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0meta%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%8F%8F%E8%BF%B0/</link>
+    <link>http://localhost:41747/zh/tags/%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0meta%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%8F%8F%E8%BF%B0/</link>
     <description>Recent content in 自动添加Meta标签与描述 on My New Hugo Site</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 04 Jun 2025 07:36:03 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/tags/%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0meta%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%8F%8F%E8%BF%B0/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:41747/zh/tags/%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0meta%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%8F%8F%E8%BF%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一款自动添加Meta标签与描述的wp插件Slim SEO</title>
-      <link>http://localhost:1313/zh/posts/2025-06-04-81/</link>
+      <link>http://localhost:41747/zh/posts/2025-06-04-81/</link>
       <pubDate>Wed, 04 Jun 2025 07:36:03 +0000</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025-06-04-81/</guid>
+      <guid>http://localhost:41747/zh/posts/2025-06-04-81/</guid>
       <description>&lt;p&gt;一款自动添加Meta标签与描述的wp插件Slim SEO，可在wp后台下载。&lt;/p&gt;</description>
     </item>
   </channel>
