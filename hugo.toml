@@ -1,8 +1,9 @@
-baseURL = "https://hugo-libertydengyong.vercel.app/"
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://hugo-libertydengyong.vercel.app/" # <-- 请替换为你的Vercel博客实际的完整URL，并确保末尾有斜杠 /
+languageCode = "en-us"
+title = "My New Hugo Site"
 theme = "PaperMod"
-defaultContentLanguage = "zh" 
+defaultContentLanguage = "zh"
+
 [params]
   defaultTheme = "light"
   disableThemeToggle = false
