@@ -1,0 +1,34 @@
+name: Deploy Hugo to GitHub Pages # 工作流名称
+
+on:
+  push:
+    branches:
+      - main # 当推送到 main 分支时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # 运行在最新的 Ubuntu 环境
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true # 确保拉取主题子模块（如果PaperMod是子模块）
+          fetch-depth: 0   # 获取完整的Git历史，方便后续操作
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3 # 使用 peaceiris/actions-hugo 动作
+        with:
+          hugo-version: '0.127.0' # 指定Hugo版本，请根据你Termux上安装的Hugo版本调整
+          # 如果你的主题需要extended版本，请使用'0.127.0+extended'
+          extended: true # 如果使用extended版本，设置为true
+
+      - name: Build Hugo
+        run: hugo --minify # 运行Hugo构建命令，生成public目录
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4 # 使用 peaceiris/actions-gh-pages 动作部署
+        if: github.ref == 'refs/heads/main' # 只有在main分支上才部署
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub Pages 部署所需的令牌
+          publish_di
