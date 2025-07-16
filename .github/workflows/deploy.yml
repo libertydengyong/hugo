@@ -31,4 +31,4 @@ jobs:
         if: github.ref == 'refs/heads/main' # 只有在main分支上才部署
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub Pages 部署所需的令牌
-          publish_di
+          publish_di: ./public
