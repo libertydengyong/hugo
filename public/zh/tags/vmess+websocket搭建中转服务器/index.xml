@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vmess&#43;WebSocket搭建中转服务器 on My New Hugo Site</title>
+    <link>http://localhost:1313/zh/tags/vmess&#43;websocket%E6%90%AD%E5%BB%BA%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <description>Recent content in Vmess&#43;WebSocket搭建中转服务器 on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 09 May 2025 06:13:18 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/tags/vmess+websocket%E6%90%AD%E5%BB%BA%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vmess&#43;WebSocket搭建中转服务器</title>
+      <link>http://localhost:1313/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</link>
+      <pubDate>Fri, 09 May 2025 06:13:18 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</guid>
+      <description>&lt;p&gt;文章来源: &lt;a href=&#34;https://www.laoliuceping.com/31450.html&#34;&gt;https://www.laoliuceping.com/31450.html&lt;/a&gt; 比如一台德国机慢，一台日本机快，给&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #555555; font-family: &amp;lsquo;Microsoft Yahei&amp;rsquo;;&amp;quot;&amp;gt;两台服务器都安装3x-ui面板，配置德鸡，&lt;!-- raw HTML omitted --&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #555555; font-family: &amp;lsquo;Microsoft Yahei&amp;rsquo;;&amp;quot;&amp;gt;面板进入“新建入站”界面。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择协议为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;Vmess&lt;!-- raw HTML omitted --&gt;，默认端口为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;10391&lt;!-- raw HTML omitted --&gt;。&lt;/li&gt;
+&lt;li&gt;添加用户时选择传输协议为WebSocket，并输入6-8位随机路径字符（如：&lt;code&gt;/abc123&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;确认后保存设置，将生成的链接导入到V2RAY客户端测试。若速度显示为数字，则表示配置成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;ol&gt;
+&lt;li&gt;登录中转机的3x-ui面板，进入“新建入站”界面。&lt;/li&gt;
+&lt;li&gt;协议选择为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;dokodemo-door&lt;!-- raw HTML omitted --&gt;（中文名“任意门”），默认端口为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;35466&lt;!-- raw HTML omitted --&gt;。&lt;/li&gt;
+&lt;li&gt;设置目标地址和端口：目标地址填写德国落地机的IP（如：95.169.x.x），目标端口为10391。&lt;/li&gt;
+&lt;li&gt;保存设置，完成配置。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;ol&gt;
+&lt;li&gt;编辑落地机的服务器配置，名称可随意设置。&lt;/li&gt;
+&lt;li&gt;地址修改为中转机的IP（如：5.34.x.x），端口修改为中转机的端口35466。&lt;/li&gt;
+&lt;li&gt;确认后右键测速，若显示速度数据则说明配置正常。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+  </channel>
+</rss>

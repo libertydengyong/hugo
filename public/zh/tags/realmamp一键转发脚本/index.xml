@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Realm&amp;amp;一键转发脚本 on My New Hugo Site</title>
+    <link>http://localhost:1313/zh/tags/realmamp%E4%B8%80%E9%94%AE%E8%BD%AC%E5%8F%91%E8%84%9A%E6%9C%AC/</link>
+    <description>Recent content in Realm&amp;amp;一键转发脚本 on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 01 Jun 2025 02:52:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/tags/realmamp%E4%B8%80%E9%94%AE%E8%BD%AC%E5%8F%91%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Realm&amp;#038;一键转发脚本 优化重构版</title>
+      <link>http://localhost:1313/zh/posts/2025-06-01-76/</link>
+      <pubDate>Sun, 01 Jun 2025 02:52:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-01-76/</guid>
+      <description>&lt;p&gt;国外机器: &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;wget -N &lt;a href=&#34;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/realm.sh&#34;&gt;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/realm.sh&lt;/a&gt; &amp;amp;&amp;amp; chmod +x realm.sh &amp;amp;&amp;amp; ./realm.sh&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;国内机器: wget -N &lt;a href=&#34;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/CN/realm.sh&#34;&gt;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/CN/realm.sh&lt;/a&gt; &amp;amp;&amp;amp; chmod +x realm.sh &amp;amp;&amp;amp; ./realm.sh&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;再次运行本脚本 ./realm.sh&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

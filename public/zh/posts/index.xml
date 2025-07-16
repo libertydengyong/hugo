@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>http://localhost:1313/zh/posts/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 14 Jul 2025 04:26:57 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH 加快连接的几种方法</title>
+      <link>http://localhost:1313/zh/posts/2025-07-14-ssh-e58aa0e5bfabe8bf9ee68ea5e79a84e587a0e7a78de696b9e6b395/</link>
+      <pubDate>Mon, 14 Jul 2025 04:26:57 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-07-14-ssh-e58aa0e5bfabe8bf9ee68ea5e79a84e587a0e7a78de696b9e6b395/</guid>
+      <description>&lt;p&gt;SSH 加快连接的几种方法 方法1: 使用 SSH 密钥认证 (最推荐)： 原理： 密钥认证比密码认证快得多，因为它不需要在每次连接时传输密码并进行哈希运算。 方法2: 禁用 DNS 反向解析 (客户端 sshd_config)： 原理： SSH 服务器在接收连接时，默认会尝试反向解析客户端的 IP 地址到域名。如果客户端 IP 没有对应的 PTR 记录，或者 DNS 解析慢，这会拖慢连接速度。 这个方法是在服务器端 /etc/ssh/sshd_config 中配置，但效果体现在客户端连接速度， sudo nano /etc/ssh/sshd_config 修改为UseDNS no，如果前面有 #，删除它 方法3: 配置 SSH 客户端连接复用 (ControlMaster)： 原理： 允许您在同一个 SSH 会话上复用多个连接。当您第一次连接后，后续的连接（如 scp, sftp 或再次 ssh）将直接通过已建立的通道，无需重新进行认证和握手，速度极快。 在您本地电脑或 比如Termux 的 &lt;del&gt;/.ssh/config 文件(&lt;/del&gt;/.ssh/config 文件的权限必须是 600) 中添加以下配置： Host * ControlMaster auto ControlPath ~/.ssh/cm_socket/%r@%h:%p ControlPersist 600s # 保持主连接活跃 600 秒 &lt;strong&gt;方法4:优化连接超时设置 (客户端 &lt;code&gt;config&lt;/code&gt;)：&lt;/strong&gt; &lt;strong&gt;原理：&lt;/strong&gt; 减少 SSH 客户端等待服务器响应的时间。如果网络特别差，可能需要增加。在客户端的 &lt;code&gt;~/.ssh/config&lt;/code&gt; 中添加: Host * ConnectTimeout 10 # 连接超时10秒 ServerAliveInterval 60 # 每60秒发送一次保活消息 ServerAliveCountMax 3 # 最多发送3次保活消息未响应则断开 &lt;strong&gt;方法5: 指定密码认证方式 (客户端 &lt;code&gt;config&lt;/code&gt;):&lt;/strong&gt; &lt;strong&gt;原理：&lt;/strong&gt; 强制 SSH 客户端先尝试 &lt;code&gt;keyboard-interactive&lt;/code&gt; 或 &lt;code&gt;password&lt;/code&gt; 认证，而不浪费时间尝试其他不适用的认证方式。但通常，如果设置了密钥，SSH 会优先尝试密钥。 在 &lt;code&gt;~/.ssh/config&lt;/code&gt; 中添加（如果需要密码登录）： Host * PreferredAuthentications publickey,keyboard-interactive,password 方法6: 禁用 GSSAPI 认证 &lt;strong&gt;原理：&lt;/strong&gt; GSSAPI 认证（如 Kerberos）在某些环境下会尝试很长时间，导致连接缓慢。 &lt;strong&gt;在服务器端 &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt; 中设置&lt;/strong&gt; GSSAPIAuthentication no 保存并重启 SSH 服务 方法7: 使用 Mosh (Mobile Shell)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Alpine 开启bbr</title>
+      <link>http://localhost:1313/zh/posts/2025-07-12-alpine-e5bc80e590afbbr/</link>
+      <pubDate>Sat, 12 Jul 2025 15:17:31 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-07-12-alpine-e5bc80e590afbbr/</guid>
+      <description>&lt;p&gt;Alpine 开启bbr: echo &amp;ldquo;tcp_bbr&amp;rdquo; &amp;gt;&amp;gt; /etc/modules &amp;amp;&amp;amp; modprobe tcp_bbr echo &amp;ldquo;net.ipv4.tcp_congestion_control=bbr&amp;rdquo; &amp;gt;&amp;gt; /etc/sysctl.conf echo &amp;ldquo;net.core.default_qdisc=fq&amp;rdquo; &amp;gt;&amp;gt; /etc/sysctl.conf sysctl -p 验证 lsmod | grep bbr&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一个轻量级 Xray 面板</title>
+      <link>http://localhost:1313/zh/posts/2025-07-09-e4b880e4b8aae8bdbbe9878fe7baa7-xray-e99da2e69dbf/</link>
+      <pubDate>Wed, 09 Jul 2025 04:32:25 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-07-09-e4b880e4b8aae8bdbbe9878fe7baa7-xray-e99da2e69dbf/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;轻量级 Xray 面板&lt;/strong&gt; bash &amp;lt;(curl -Ls &lt;a href=&#34;https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh&#34;&gt;https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh&lt;/a&gt;) 项目来源: &lt;a href=&#34;https://github.com/FranzKafkaYu/x-ui?tab=readme-ov-file#%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85&#34;&gt;https://github.com/FranzKafkaYu/x-ui?tab=readme-ov-file#%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>专为alpine定制的Xray一键脚本</title>
+      <link>http://localhost:1313/zh/posts/2025-07-01-e4b893e4b8baalpinee5ae9ae588b6e79a84xraye4b880e994aee8849ae69cac/</link>
+      <pubDate>Tue, 01 Jul 2025 07:45:48 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-07-01-e4b893e4b8baalpinee5ae9ae588b6e79a84xraye4b880e994aee8849ae69cac/</guid>
+      <description>&lt;p&gt;专为alpine定制的Xray一键脚本 wget &lt;a href=&#34;https://raw.githubusercontent.com/miku111/XrayOnAlpine/main/install-release.sh&#34;&gt;https://raw.githubusercontent.com/miku111/XrayOnAlpine/main/install-release.sh&lt;/a&gt; &amp;amp;&amp;amp; bash install-release.sh 或curl -L -s &lt;a href=&#34;https://raw.githubusercontent.com/miku111/XrayOnAlpine/main/install-release.sh&#34;&gt;https://raw.githubusercontent.com/miku111/XrayOnAlpine/main/install-release.sh&lt;/a&gt; | bash 启动Xray: sudo service xray start 项目来源https://github.com/miku111/XrayOnAlpine&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>css的方式一行代码给wordpress添加面包屑导航</title>
+      <link>http://localhost:1313/zh/posts/2025-06-11-1-html/</link>
+      <pubDate>Wed, 11 Jun 2025 12:13:49 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-11-1-html/</guid>
+      <description>&lt;p&gt;css的方式一行代码给wordpress添加面包屑导航: 给wordpress的head文件添加: &amp;lt;div class=&amp;ldquo;my-custom-breadcrumbs&amp;rdquo;&amp;gt;&amp;lt;a href=&amp;quot;/&amp;quot; title=&amp;ldquo;Home&amp;rdquo;&amp;gt;首页&amp;lt;/a&amp;gt; | &amp;lt;?php the_category(&amp;quot;,&amp;quot;); ?&amp;gt; | &amp;lt;span class=&amp;ldquo;current-post-title&amp;rdquo;&amp;gt;&amp;lt;?php the_title(); ?&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt; 接下来，登录WordPress后台，导航到外观 &amp;gt; 习惯。点击额外CSS（附加CSS），在文本框中添加以下 CSS 代码： /* * 面包屑导航样式 * 确保在手机上显示并统一颜色 */ /* 定义一个变量来存储链接的蓝色，方便统一管理。 你可以通过检查你网站其他链接的颜色来找到这个蓝色值。 */ :root { &amp;ndash;my-link-blue: #007bff; /* 这是一个常见的蓝色，请根据你网站的实际链接颜色调整 */ } /* 针对手机屏幕的媒体查询：确保面包屑显示 */ @media screen and (max-width: 768px) { /* 768px 是一个常见的手机/平板断点，可根据需要调整 */ .my-custom-breadcrumbs { /* 定位到我们的面包屑容器 */ display: block !important; /* 强制显示为块级元素 */ visibility: visible !important; /* 强制可见 */ /* 以下是可选的样式调整，让它在手机上看起来更好： */ text-align: left; /* 左对齐 */ padding: 10px 15px; /* 添加内边距 */ font-size: 0.9em; /* 调整字体大小，使其在小屏幕上更紧凑 */ overflow-x: auto; /* 如果面包屑内容过长，允许水平滚动 */ white-space: nowrap; /* 防止面包屑在小屏幕上换行，保持单行显示 */ } /* 确保内部元素在行内显示 */ .my-custom-breadcrumbs a, .my-custom-breadcrumbs .current-post-title { display: inline-block !important; /* 或者 &amp;lsquo;inline&amp;rsquo; */ } } /* 统一面包屑内所有文本（包括文章标题）的颜色为链接蓝色 */ .my-custom-breadcrumbs a, /* 链接 */ .my-custom-breadcrumbs .current-post-title /* 当前文章标题 */ { color: var(&amp;ndash;my-link-blue) !important; /* 使用上面定义的蓝色变量，并强制覆盖 */ } 点击“发布”按钮保存更改。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一个清新的wp主题与两个blogger主题</title>
+      <link>http://localhost:1313/zh/posts/2025-06-10-e4b880e4b8aae6b885e696b0e79a84wpe4b8bbe9a298e4b88ee4b8a4e4b8aabloggere4b8bbe9a298/</link>
+      <pubDate>Tue, 10 Jun 2025 11:28:45 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-10-e4b880e4b8aae6b885e696b0e79a84wpe4b8bbe9a298e4b88ee4b8a4e4b8aabloggere4b8bbe9a298/</guid>
+      <description>&lt;p&gt;一个清新的wp主题与两个blogger主题: 清新的wp主题是Iconic One Tme 两个blogger主题一个是median ui blogger template 一个是Contempo ，Contempo在Blogger 官方内置主题有，当然，Soho / Emporio /Notable 这几个也不错，也在Blogger 官方内置。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一行代码给wp添加面包屑导航</title>
+      <link>http://localhost:1313/zh/posts/2025-06-07-95/</link>
+      <pubDate>Sat, 07 Jun 2025 14:55:14 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-07-95/</guid>
+      <description>&lt;p&gt;一行代码给wp添加面包屑导航 &amp;lt;a href=&amp;quot;/&amp;quot; title=&amp;ldquo;Home&amp;rdquo;&amp;gt;首页&amp;lt;/a&amp;gt; | &amp;lt;?php the_category(&amp;quot;,&amp;quot;); ?&amp;gt; | &amp;lt;?php the_title(); ?&amp;gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>TCP调优一键简化版</title>
+      <link>http://localhost:1313/zh/posts/2025-06-07-89/</link>
+      <pubDate>Sat, 07 Jun 2025 12:24:14 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-07-89/</guid>
+      <description>&lt;p&gt;TCP调优一键简化版 bash &amp;lt;(curl -sL &lt;a href=&#34;https://raw.githubusercontent.com/AiLi1337/TCP-Tuning-Simple-Version/main/TCP-Tuning-Simple-Version.sh&#34;&gt;https://raw.githubusercontent.com/AiLi1337/TCP-Tuning-Simple-Version/main/TCP-Tuning-Simple-Version.sh&lt;/a&gt;) 旧版脚本 wget -q &lt;a href=&#34;https://raw.githubusercontent.com/BlackSheep-cry/TCP-Optimization-Tool/main/tool.sh&#34;&gt;https://raw.githubusercontent.com/BlackSheep-cry/TCP-Optimization-Tool/main/tool.sh&lt;/a&gt; -O tool.sh &amp;amp;&amp;amp; chmod +x tool.sh &amp;amp;&amp;amp; ./tool.sh&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>可与RN比一比的hudsonvalleyhost</title>
+      <link>http://localhost:1313/zh/posts/2025-06-04-82/</link>
+      <pubDate>Wed, 04 Jun 2025 14:13:33 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-04-82/</guid>
+      <description>&lt;p&gt;hudsonvalleyhost与colocrossing是同一家，但colocrossing常常只卖美东鸡，而hudsonvalleyhost卖美西鸡，有512m 8刀年付款，月付款折扣后是2刀多，比较实惠，可与RN比一比，缺点是只信用卡，pp付款。 官网: hudsonvalleyhost.com&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一款自动添加Meta标签与描述的wp插件Slim SEO</title>
+      <link>http://localhost:1313/zh/posts/2025-06-04-81/</link>
+      <pubDate>Wed, 04 Jun 2025 07:36:03 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-04-81/</guid>
+      <description>&lt;p&gt;一款自动添加Meta标签与描述的wp插件Slim SEO，可在wp后台下载。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberPanel面板安装Redis</title>
+      <link>http://localhost:1313/zh/posts/2025-06-04-79/</link>
+      <pubDate>Wed, 04 Jun 2025 04:01:25 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-04-79/</guid>
+      <description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;在&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Cyber​​Panel&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;面板【管理服务】-【应用程序】安装redis，再去PHP安装Redis扩展，并去wp安装Redis插件。&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Realm&amp;#038;一键转发脚本 优化重构版</title>
+      <link>http://localhost:1313/zh/posts/2025-06-01-76/</link>
+      <pubDate>Sun, 01 Jun 2025 02:52:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-06-01-76/</guid>
+      <description>&lt;p&gt;国外机器: &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;wget -N &lt;a href=&#34;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/realm.sh&#34;&gt;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/realm.sh&lt;/a&gt; &amp;amp;&amp;amp; chmod +x realm.sh &amp;amp;&amp;amp; ./realm.sh&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;国内机器: wget -N &lt;a href=&#34;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/CN/realm.sh&#34;&gt;https://raw.githubusercontent.com/shiyi11yi/EZRealm/main/CN/realm.sh&lt;/a&gt; &amp;amp;&amp;amp; chmod +x realm.sh &amp;amp;&amp;amp; ./realm.sh&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;再次运行本脚本 ./realm.sh&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Windows内存释放工具</title>
+      <link>http://localhost:1313/zh/posts/2025-05-30-75/</link>
+      <pubDate>Fri, 30 May 2025 12:46:15 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-30-75/</guid>
+      <description>&lt;p&gt;Windows内存释放工具: &lt;a href=&#34;https://github.com/henrypp/memreduct/releases&#34;&gt;https://github.com/henrypp/memreduct/releases&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>frp-Android</title>
+      <link>http://localhost:1313/zh/posts/2025-05-30-74/</link>
+      <pubDate>Fri, 30 May 2025 08:49:07 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-30-74/</guid>
+      <description>&lt;p&gt;frp-Android项目地址: &lt;a href=&#34;https://github.com/AceDroidX/frp-Android/releases&#34;&gt;https://github.com/AceDroidX/frp-Android/releases&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>parallels永久免费版的一点技巧</title>
+      <link>http://localhost:1313/zh/posts/2025-05-29-73/</link>
+      <pubDate>Thu, 29 May 2025 13:18:41 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-29-73/</guid>
+      <description>&lt;p&gt;parallels永久免费版，不要点其他的，直接点 Client Installation File 下面的链接: &lt;a href=&#34;https://www.parallels.cn/products/ras/capabilities/parallels-client/&#34;&gt;https://www.parallels.cn/products/ras/capabilities/parallels-client/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一个安卓模拟定位软件</title>
+      <link>http://localhost:1313/zh/posts/2025-05-25-71/</link>
+      <pubDate>Sun, 25 May 2025 12:30:06 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-25-71/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://aixis.lanzoul.com/tp/igeEQ2t9b2dc?webtp=V2YBYVw1Am5TNABlAWEBMFM5AT1TcFFhBjJRZVc5BjEGP1s&#34;&gt;https://aixis.lanzoul.com/tp/igeEQ2t9b2dc?webtp=V2YBYVw1Am5TNABlAWEBMFM5AT1TcFFhBjJRZVc5BjEGP1s&lt;/a&gt;_bAGkBZ1N5VDAGYAc1VSEHM1E_bVGJSewE2Uz0HNFd5AWdcNgJvU3kAYQEwATlTOAE3Uz5RZQZjUWZXPAZlBjNbOABoAWBTMlQ0BmsHNFU_bBzZRb1Q0UjcBY1M7BzJXYAFkXGMCNFMyACoBZQ_c_c&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>vmware下载地址</title>
+      <link>http://localhost:1313/zh/posts/2025-05-23-70/</link>
+      <pubDate>Fri, 23 May 2025 06:21:54 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-23-70/</guid>
+      <description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt;先注册账号，再进去下载:&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&amp;amp;amp;freeDownloads=true&#34;&gt;https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&amp;amp;freeDownloads=true&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>非解锁GPT地区如何解锁GPT？</title>
+      <link>http://localhost:1313/zh/posts/2025-05-22-69/</link>
+      <pubDate>Thu, 22 May 2025 13:09:34 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-22-69/</guid>
+      <description>&lt;p&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;文章来源 nodeseek的keo &lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;https://www.nodeseek.com/post-129910-1&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;非解锁GPT地区如何解锁GPT？&lt;!-- raw HTML omitted --&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;换行然后X-ui分流&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 基础准备
+sudo apt update
+sudo apt install gnupg curl
+
+# 为库安装GPG Key
+curl https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+
+# 添加源到库
+echo &amp;#34;deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main&amp;#34; | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+
+# update APT
+sudo apt update #如果不是管理员账号下，使用这个
+
+# 安装Warp
+apt install cloudflare-warp
+
+# 注册Warp 运行命令给设备注册
+warp-cli registration new
+
+# 打开代理模式
+warp-cli mode proxy
+
+# 连接Warp
+warp-cli connect
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;使用此X-ui配置，在里面填写您要访问的网址&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title> x-ui甬哥版据说默认解锁ChatGPT</title>
+      <link>http://localhost:1313/zh/posts/2025-05-22-68/</link>
+      <pubDate>Thu, 22 May 2025 04:37:23 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-22-68/</guid>
+      <description>&lt;p&gt;x-ui甬哥版据说默认解锁ChatGPT，最多实现6个IP分流共存，支持warp-socks5与wireguard warp出站分流: bash &amp;lt;(wget -qO- &lt;a href=&#34;https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh&#34;&gt;https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh&lt;/a&gt; 2&amp;gt; /dev/null) 项目地址 &lt;a href=&#34;https://github.com/yonggekkk/x-ui-yg&#34;&gt;https://github.com/yonggekkk/x-ui-yg&lt;/a&gt; &lt;!-- raw HTML omitted --&gt;bash &amp;lt;(wget -qO- bash &amp;lt;(wget -qO- &lt;a href=&#34;https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh&#34;&gt;https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh&lt;/a&gt; 2&amp;gt; /dev/null) 2&amp;gt; /dev/null)&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>所谓的3X-UI优化版</title>
+      <link>http://localhost:1313/zh/posts/2025-05-21-66/</link>
+      <pubDate>Wed, 21 May 2025 14:40:29 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-21-66/</guid>
+      <description>&lt;p&gt;bash &amp;lt;(curl -Ls &lt;a href=&#34;https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh&#34;&gt;https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh&lt;/a&gt;)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>privacy eraser Windows优化工具</title>
+      <link>http://localhost:1313/zh/posts/2025-05-18-65/</link>
+      <pubDate>Sun, 18 May 2025 09:19:42 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-18-65/</guid>
+      <description>&lt;p&gt;privacy eraser Windows优化工具 下载： &lt;a href=&#34;https://download.cnet.com/support/privacy-eraser-free/3000-18512&#34;&gt;https://download.cnet.com/support/privacy-eraser-free/3000-18512&lt;/a&gt;_4-76086812.html&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Twentytwelve 木头人修改版</title>
+      <link>http://localhost:1313/zh/posts/2025-05-15-61/</link>
+      <pubDate>Thu, 15 May 2025 00:29:14 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-15-61/</guid>
+      <description>&lt;p&gt;Twentytwelve 木头人修改版下载地址 &lt;a href=&#34;https://github.com/huhexian/2012-huhexian/archive/refs/heads/main.zip&#34;&gt;https://github.com/huhexian/2012-huhexian/archive/refs/heads/main.zip&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>TCP 迷之调参</title>
+      <link>http://localhost:1313/zh/posts/2025-05-14-tcp-e8bfb7e4b98be8b083e58f82/</link>
+      <pubDate>Wed, 14 May 2025 14:43:11 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-14-tcp-e8bfb7e4b98be8b083e58f82/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://omnitt.com/&#34;&gt;https://omnitt.com/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一键优化TCP</title>
+      <link>http://localhost:1313/zh/posts/2025-05-14-e4b880e994aee4bc98e58c96tcp/</link>
+      <pubDate>Wed, 14 May 2025 02:10:41 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-14-e4b880e994aee4bc98e58c96tcp/</guid>
+      <description>&lt;p&gt;wget &lt;a href=&#34;https://github.com/BlueSkyWithWhiteClouds/Optimize-Tcp-Cache/releases/download/v1.0/Optimize&#34;&gt;https://github.com/BlueSkyWithWhiteClouds/Optimize-Tcp-Cache/releases/download/v1.0/Optimize&lt;/a&gt;_Tcp_Cache.sh ; chmod +x Optimize_Tcp_Cache.sh ; ./Optimize_Tcp_Cache.sh&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>dd命令大集合</title>
+      <link>http://localhost:1313/zh/posts/2025-05-11-dde591bde4bba4e5a4a7e99b86e59088/</link>
+      <pubDate>Sun, 11 May 2025 11:41:02 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-11-dde591bde4bba4e5a4a7e99b86e59088/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://gist.github.com/barkpixels/da77865ac6f59b24f567912939ab82b0&#34;&gt;https://gist.github.com/barkpixels/da77865ac6f59b24f567912939ab82b0&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Vmess&#43;WebSocket搭建中转服务器</title>
+      <link>http://localhost:1313/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</link>
+      <pubDate>Fri, 09 May 2025 06:13:18 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-09-vmesswebsockete690ade5bbbae4b8ade8bdace69c8de58aa1e599a8/</guid>
+      <description>&lt;p&gt;文章来源: &lt;a href=&#34;https://www.laoliuceping.com/31450.html&#34;&gt;https://www.laoliuceping.com/31450.html&lt;/a&gt; 比如一台德国机慢，一台日本机快，给&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #555555; font-family: &amp;lsquo;Microsoft Yahei&amp;rsquo;;&amp;quot;&amp;gt;两台服务器都安装3x-ui面板，配置德鸡，&lt;!-- raw HTML omitted --&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #555555; font-family: &amp;lsquo;Microsoft Yahei&amp;rsquo;;&amp;quot;&amp;gt;面板进入“新建入站”界面。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择协议为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;Vmess&lt;!-- raw HTML omitted --&gt;，默认端口为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;10391&lt;!-- raw HTML omitted --&gt;。&lt;/li&gt;
+&lt;li&gt;添加用户时选择传输协议为WebSocket，并输入6-8位随机路径字符（如：&lt;code&gt;/abc123&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;确认后保存设置，将生成的链接导入到V2RAY客户端测试。若速度显示为数字，则表示配置成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;ol&gt;
+&lt;li&gt;登录中转机的3x-ui面板，进入“新建入站”界面。&lt;/li&gt;
+&lt;li&gt;协议选择为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;dokodemo-door&lt;!-- raw HTML omitted --&gt;（中文名“任意门”），默认端口为&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;35466&lt;!-- raw HTML omitted --&gt;。&lt;/li&gt;
+&lt;li&gt;设置目标地址和端口：目标地址填写德国落地机的IP（如：95.169.x.x），目标端口为10391。&lt;/li&gt;
+&lt;li&gt;保存设置，完成配置。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;ol&gt;
+&lt;li&gt;编辑落地机的服务器配置，名称可随意设置。&lt;/li&gt;
+&lt;li&gt;地址修改为中转机的IP（如：5.34.x.x），端口修改为中转机的端口35466。&lt;/li&gt;
+&lt;li&gt;确认后右键测速，若显示速度数据则说明配置正常。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    <item>
+      <title>一键更换为XanMod内核</title>
+      <link>http://localhost:1313/zh/posts/2025-05-07-e4b880e994aee69bb4e68da2e4b8baxanmode58685e6a0b8/</link>
+      <pubDate>Wed, 07 May 2025 13:39:51 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-07-e4b880e994aee69bb4e68da2e4b8baxanmode58685e6a0b8/</guid>
+      <description>&lt;p&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;wget -O &lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://draft.blogger.com/blog/page/edit/6572730579278366385/7941114663552175576&#34;&gt;tcpx.sh&lt;/a&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt; &amp;ldquo;&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://draft.blogger.com/blog/page/edit/6572730579278366385/7941114663552175576&#34;&gt;https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh&lt;/a&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;rdquo;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt;&amp;rdquo; &amp;amp;&amp;amp; chmod +x &lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://draft.blogger.com/blog/page/edit/6572730579278366385/7941114663552175576&#34;&gt;tcpx.sh&lt;/a&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;,&amp;ldquo;face&amp;rdquo;:&amp;quot;-apple-system, BlinkMacSystemFont, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;PingFang SC&amp;quot;, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Source Han Sans SC&amp;quot;, &amp;quot;Noto Sans CJK SC&amp;quot;, &amp;quot;WenQuanYi Micro Hei&amp;quot;, sans-serif&amp;quot;}&amp;quot; style=&amp;ldquo;color: #444444;&amp;quot;&amp;gt; &amp;amp;&amp;amp; ./tcpx.sh&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>BBRplus与其他加速方式安装</title>
+      <link>http://localhost:1313/zh/posts/2025-05-06-bbrpluse4b88ee585b6e4bb96e58aa0e9809fe696b9e5bc8fe5ae89e8a385/</link>
+      <pubDate>Tue, 06 May 2025 12:28:53 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-06-bbrpluse4b88ee585b6e4bb96e58aa0e9809fe696b9e5bc8fe5ae89e8a385/</guid>
+      <description>&lt;p&gt;wget -N &amp;ndash;no-check-certificate &amp;ldquo;&lt;a href=&#34;https://gist.github.com/zeruns/a0ec603f20d1b86de6a774a8ba27588f/raw/4f9957ae23f5efb2bb7c57a198ae2cffebfb1c56/tcp.sh%22&#34;&gt;https://gist.github.com/zeruns/a0ec603f20d1b86de6a774a8ba27588f/raw/4f9957ae23f5efb2bb7c57a198ae2cffebfb1c56/tcp.sh&#34;&lt;/a&gt; &amp;amp;&amp;amp; chmod +x tcp.sh &amp;amp;&amp;amp; ./tcp.sh 重启 接着 &lt;strong&gt;./tcp.sh&lt;/strong&gt; &amp;lt;span data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #ff0000;&amp;quot;&amp;gt;检测是否在运行，输入: lsmod | grep bbr&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #ff0000;&amp;quot;&amp;gt;或 sysctl net.ipv4.tcp_congestion_control&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-original-attrs=&amp;rdquo;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot; style=&amp;ldquo;color: #ff0000;&amp;quot;&amp;gt;如果都有bbrplus ，则表明bbrplus在运行。&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>推荐几个IP工具</title>
+      <link>http://localhost:1313/zh/posts/2025-05-06-e68ea8e88d90e4b880e4b8aaipe5b7a5e585b7/</link>
+      <pubDate>Tue, 06 May 2025 07:35:59 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-06-e68ea8e88d90e4b880e4b8aaipe5b7a5e585b7/</guid>
+      <description>&lt;p&gt;这个据说可以检测是否是住宅IP &lt;a href=&#34;https://iphub.info/&#34;&gt;https://iphub.info/&lt;/a&gt; 这个准一点 &lt;a href=&#34;https://ping0.cc/&#34;&gt;https://ping0.cc/&lt;/a&gt; 这个比较全面，可以检测延迟 &lt;a href=&#34;https://iplark.com/&#34;&gt;https://iplark.com/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一键安装 OpenLiteSpeed与WP</title>
+      <link>http://localhost:1313/zh/posts/2025-05-06-e4b880e994aee5ae89e8a385-openlitespeede4b88ewp/</link>
+      <pubDate>Tue, 06 May 2025 04:00:43 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-06-e4b880e994aee5ae89e8a385-openlitespeede4b88ewp/</guid>
+      <description>&lt;p&gt;一键安装 OpenLiteSpeed与WP 运行wget &lt;a href=&#34;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&#34;&gt;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&lt;/a&gt; &amp;amp;&amp;amp; bash ols1clk.sh 或 bash &amp;lt;( curl -k &lt;a href=&#34;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&#34;&gt;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&lt;/a&gt; ) 安装 WordPress: bash &amp;lt;( curl -k &lt;a href=&#34;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&#34;&gt;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&lt;/a&gt; ) -w&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>一个清新简约的免费wp主题</title>
+      <link>http://localhost:1313/zh/posts/2025-05-05-e4b880e4b8aae6b885e696b0e7ae80e7baa6e79a84e5858de8b4b9wpe4b8bbe9a298/</link>
+      <pubDate>Mon, 05 May 2025 00:21:32 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-05-e4b880e4b8aae6b885e696b0e7ae80e7baa6e79a84e5858de8b4b9wpe4b8bbe9a298/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://down.2zzt.com/uploads/cu/cu2.3.zip&#34;&gt;https://down.2zzt.com/uploads/cu/cu2.3.zip&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Windows内存释放 on My New Hugo Site</title>
+    <link>http://localhost:1313/zh/tags/windows%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE/</link>
+    <description>Recent content in Windows内存释放 on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 30 May 2025 12:46:15 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/tags/windows%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows内存释放工具</title>
+      <link>http://localhost:1313/zh/posts/2025-05-30-75/</link>
+      <pubDate>Fri, 30 May 2025 12:46:15 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-05-30-75/</guid>
+      <description>&lt;p&gt;Windows内存释放工具: &lt;a href=&#34;https://github.com/henrypp/memreduct/releases&#34;&gt;https://github.com/henrypp/memreduct/releases&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

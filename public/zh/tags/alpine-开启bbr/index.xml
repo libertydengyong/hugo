@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Alpine 开启bbr on My New Hugo Site</title>
+    <link>http://localhost:1313/zh/tags/alpine-%E5%BC%80%E5%90%AFbbr/</link>
+    <description>Recent content in Alpine 开启bbr on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 12 Jul 2025 15:17:31 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/tags/alpine-%E5%BC%80%E5%90%AFbbr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alpine 开启bbr</title>
+      <link>http://localhost:1313/zh/posts/2025-07-12-alpine-e5bc80e590afbbr/</link>
+      <pubDate>Sat, 12 Jul 2025 15:17:31 +0000</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025-07-12-alpine-e5bc80e590afbbr/</guid>
+      <description>&lt;p&gt;Alpine 开启bbr: echo &amp;ldquo;tcp_bbr&amp;rdquo; &amp;gt;&amp;gt; /etc/modules &amp;amp;&amp;amp; modprobe tcp_bbr echo &amp;ldquo;net.ipv4.tcp_congestion_control=bbr&amp;rdquo; &amp;gt;&amp;gt; /etc/sysctl.conf echo &amp;ldquo;net.core.default_qdisc=fq&amp;rdquo; &amp;gt;&amp;gt; /etc/sysctl.conf sysctl -p 验证 lsmod | grep bbr&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

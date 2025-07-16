@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>OpenLiteSpeed与wp on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/openlitespeed%E4%B8%8Ewp/</link>
+    <description>Recent content in OpenLiteSpeed与wp on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 06 May 2025 04:00:43 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/openlitespeed%E4%B8%8Ewp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一键安装 OpenLiteSpeed与WP</title>
+      <link>http://localhost:1313/posts/2025-05-06-e4b880e994aee5ae89e8a385-openlitespeede4b88ewp/</link>
+      <pubDate>Tue, 06 May 2025 04:00:43 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-06-e4b880e994aee5ae89e8a385-openlitespeede4b88ewp/</guid>
+      <description>&lt;p&gt;一键安装 OpenLiteSpeed与WP 运行wget &lt;a href=&#34;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&#34;&gt;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&lt;/a&gt; &amp;amp;&amp;amp; bash ols1clk.sh 或 bash &amp;lt;( curl -k &lt;a href=&#34;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&#34;&gt;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&lt;/a&gt; ) 安装 WordPress: bash &amp;lt;( curl -k &lt;a href=&#34;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&#34;&gt;https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh&lt;/a&gt; ) -w&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

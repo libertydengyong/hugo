@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hudsonvalleyhost on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/hudsonvalleyhost/</link>
+    <description>Recent content in Hudsonvalleyhost on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 04 Jun 2025 14:13:33 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/hudsonvalleyhost/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>可与RN比一比的hudsonvalleyhost</title>
+      <link>http://localhost:1313/posts/2025-06-04-82/</link>
+      <pubDate>Wed, 04 Jun 2025 14:13:33 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-06-04-82/</guid>
+      <description>&lt;p&gt;hudsonvalleyhost与colocrossing是同一家，但colocrossing常常只卖美东鸡，而hudsonvalleyhost卖美西鸡，有512m 8刀年付款，月付款折扣后是2刀多，比较实惠，可与RN比一比，缺点是只信用卡，pp付款。 官网: hudsonvalleyhost.com&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

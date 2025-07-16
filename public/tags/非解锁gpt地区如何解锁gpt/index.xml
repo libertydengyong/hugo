@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>非解锁GPT地区如何解锁GPT？ on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/%E9%9D%9E%E8%A7%A3%E9%94%81gpt%E5%9C%B0%E5%8C%BA%E5%A6%82%E4%BD%95%E8%A7%A3%E9%94%81gpt/</link>
+    <description>Recent content in 非解锁GPT地区如何解锁GPT？ on My New Hugo Site</description>
+    <generator>Hugo -- 0.148.1</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 22 May 2025 13:09:34 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E9%9D%9E%E8%A7%A3%E9%94%81gpt%E5%9C%B0%E5%8C%BA%E5%A6%82%E4%BD%95%E8%A7%A3%E9%94%81gpt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>非解锁GPT地区如何解锁GPT？</title>
+      <link>http://localhost:1313/posts/2025-05-22-69/</link>
+      <pubDate>Thu, 22 May 2025 13:09:34 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-22-69/</guid>
+      <description>&lt;p&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;文章来源 nodeseek的keo &lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;https://www.nodeseek.com/post-129910-1&lt;!-- raw HTML omitted --&gt; &amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;非解锁GPT地区如何解锁GPT？&lt;!-- raw HTML omitted --&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;换行然后X-ui分流&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 基础准备
+sudo apt update
+sudo apt install gnupg curl
+
+# 为库安装GPG Key
+curl https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+
+# 添加源到库
+echo &amp;#34;deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main&amp;#34; | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+
+# update APT
+sudo apt update #如果不是管理员账号下，使用这个
+
+# 安装Warp
+apt install cloudflare-warp
+
+# 注册Warp 运行命令给设备注册
+warp-cli registration new
+
+# 打开代理模式
+warp-cli mode proxy
+
+# 连接Warp
+warp-cli connect
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&amp;lt;span data-keep-original-tag=&amp;ldquo;false&amp;rdquo; data-original-attrs=&amp;quot;{&amp;ldquo;style&amp;rdquo;:&amp;quot;&amp;quot;}&amp;quot;&amp;gt;使用此X-ui配置，在里面填写您要访问的网址&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
