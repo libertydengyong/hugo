@@ -1,4 +1,4 @@
-baseURL = 'https://hugo-libertydengyong.vercel.app//'
+baseURL = 'https://hugo-libertydengyong.vercel.app/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = "PaperMod"
