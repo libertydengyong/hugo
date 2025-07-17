@@ -55,3 +55,4 @@ pagination.pagerSize = 5
 
 [markup.highlight]
   noClasses = false
+
